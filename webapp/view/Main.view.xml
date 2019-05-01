@@ -1,0 +1,54 @@
+<mvc:View controllerName="com.sap.Cellnex_front.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core">
+	<Shell id="shell">
+		<SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master" orientationChange="onOrientationChange">
+			<detailPages>
+				<Page id="detail" title="Detail 1" class="sapUiStdPage">
+					<content>
+						<core:Fragment fragmentName="com.sap.Cellnex_front.view.InfoGeneral" type="XML"/>
+					</content>
+				</Page>
+				<Page id="detailDetail" title="Detail Detail" class="sapUiStdPage" showNavButton="true" navButtonText="Back"
+					navButtonPress="onPressDetailBack">
+					<content></content>
+				</Page>
+				<Page id="detail2" title="Detail 3 Page" class="sapUiStdPage" showNavButton="true" navButtonText="Back" navButtonPress="onPressDetailBack">
+					<content></content>
+				</Page>
+			</detailPages>
+			<masterPages>
+				<Page id="master" title="Master 1" icon="sap-icon://action" class="sapUiStdPage">
+					<content>
+						<tnt:NavigationList id="navigationList" width="320px" selectedKey="subItem3" itemSelect="onListItemPress">
+							<tnt:NavigationListItem text="Item 1" key="rootItem1" icon="sap-icon://employee" custom:to="detail">
+								<tnt:NavigationListItem text="Sub Item 1" custom:to="detailDetail"/>
+								<tnt:NavigationListItem text="Sub Item 2"/>
+							</tnt:NavigationListItem>
+							<tnt:NavigationListItem text="Invisible Section" icon="sap-icon://employee" visible="false">
+								<tnt:NavigationListItem text="Sub Item 1"/>
+								<tnt:NavigationListItem text="Sub Item 2"/>
+							</tnt:NavigationListItem>
+							<tnt:NavigationListItem text="Item 2" icon="sap-icon://building">
+								<tnt:NavigationListItem text="Sub Item 1"/>
+								<tnt:NavigationListItem text="Sub Item 2"/>
+								<tnt:NavigationListItem text="Sub Item 3"/>
+								<tnt:NavigationListItem text="Sub Item 4"/>
+							</tnt:NavigationListItem>
+						</tnt:NavigationList>
+					</content>
+				</Page>
+				<Page id="master2" title="Master 2" icon="sap-icon://action" class="sapUiStdPage" showNavButton="true" navButtonPress="onPressMasterBack">
+					<content>
+						<List itemPress="onListItemPress">
+							<items>
+								<StandardListItem title="To Detail 1" type="Active" custom:to="detail"/>
+								<StandardListItem title="To Detail 2" type="Active" custom:to="detailDetail"/>
+								<StandardListItem title="To Detail 3" type="Active" custom:to="detail2"/>
+							</items>
+						</List>
+					</content>
+				</Page>
+			</masterPages>
+		</SplitApp>
+	</Shell>
+</mvc:View>
